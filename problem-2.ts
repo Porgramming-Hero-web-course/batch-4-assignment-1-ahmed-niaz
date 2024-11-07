@@ -5,8 +5,7 @@ const removeDuplicates = (numbers: number[]) => {
       uniqueArr.push(numbers[n]);
     }
   }
-  return uniqueArr
+  return uniqueArr;
 };
-
 
 // console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5]));

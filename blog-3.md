@@ -51,9 +51,9 @@ class Cat {
 
 function makeSound(animal: Dog | Cat) {
   if (animal instanceof Dog) {
-    animal.bark(); // TypeScript knows it's a Dog
+    animal.bark();
   } else {
-    animal.meow(); // TypeScript knows it's a Cat
+    animal.meow(); 
   }
 }
 ```
@@ -109,24 +109,23 @@ function operate(vehicle: Car | Boat) {
 Discriminated unions are a design pattern rather than a function or operator. 
 
 ```bash
-interface Circle {
-  kind: "circle";
+type Circle = {
+  shape: "circle";
   radius: number;
-}
+};
+type Rectangle = {
+  shape: "rectangle";
+  width: number;
+  height: number;
+};
 
-interface Square {
-  kind: "square";
-  sideLength: number;
-}
+type Shape = Circle | Rectangle;
 
-type Shape = Circle | Square;
-
-function getArea(shape: Shape): number {
-  switch (shape.kind) {
-    case "circle":
-      return Math.PI * shape.radius ** 2;
-    case "square":
-      return shape.sideLength ** 2;
+const calculateShapeArea = (shape: Shape) => {
+  if (shape.shape === "circle") {
+    return (Math.PI * shape.radius ** 2).toFixed(2);
+  } else if (shape.shape === "rectangle") {
+    return shape.width * shape.height;
   }
-}
+};
 ```
